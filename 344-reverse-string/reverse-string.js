@@ -4,15 +4,14 @@
  */
 var reverseString = function(s) {
 
-    let left = 0;
-    let right = s.length-1;
+    let len = s.length;
+    let halflen = Math.floor(len/2);
 
-    while(left < right){
-        let temp = s[left];
-        s[left] = s[right];
-        s[right] = temp;
-       left++;
-       right--;
+    for(let i=0;i<halflen;i++){
+        let temp = s[i];
+        s[i] = s[len-1-i];
+        s[len-1-i]=temp;
+
     }
     
 };
