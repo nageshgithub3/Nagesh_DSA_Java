@@ -4,6 +4,8 @@
  */
 var maxProfit = function(prices) {
 
+    if(prices.length==0) return 0;
+
     let min = prices[0];
     let maxProfit = 0;
 
