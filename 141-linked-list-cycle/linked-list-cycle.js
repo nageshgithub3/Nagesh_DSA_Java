@@ -12,17 +12,17 @@
  */
 var hasCycle = function(head) {
 
-    let s = new Set();
+    let slow=fast=head;
 
-    let curr = head;
-
-    while(curr!=null){
-        if(s.has(curr)){
+    while(fast && fast.next){
+        slow=slow.next;
+        fast=fast.next.next;
+        if(slow==fast){
             return true;
         }
-        s.add(curr);
-        curr=curr.next;
     }
     return false;
+
+    
     
 };
