@@ -10,14 +10,17 @@
  * @return {ListNode}
  */
 var middleNode = function(head) {
-    let slow = head;
-    let fast = head;
 
-    while(fast!=null && fast.next!=null){
-        slow = slow.next;
-        fast = fast.next.next;
+    let arr = [];
+    let curr = head;
+
+    while(curr!=null){
+        arr.push(curr);
+        curr=curr.next;
     }
-    return slow;
 
+    let mid = Math.floor(arr.length/2);
+
+    return arr[mid];
     
 };
