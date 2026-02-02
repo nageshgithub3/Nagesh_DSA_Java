@@ -1,14 +1,13 @@
-// create a node
+// create a Node
 function Node(val){
-    this.val = val;
-    this.next = null;
+    this.val=val;
+    this.next=null;
 }
 
-
 var MyLinkedList = function() {
-
-    this.head = null;
-    this.size = 0;
+    // create a empty linkedList
+    this.head=null;
+    this.size=0;
     
 };
 
@@ -33,6 +32,7 @@ MyLinkedList.prototype.get = function(index) {
  * @return {void}
  */
 MyLinkedList.prototype.addAtHead = function(val) {
+
     let newNode = new Node(val);
     newNode.next = this.head;
     this.head = newNode;
@@ -46,16 +46,17 @@ MyLinkedList.prototype.addAtHead = function(val) {
  */
 MyLinkedList.prototype.addAtTail = function(val) {
 
-   // handle the corner case - if list is empty
-   let newNode = new Node(val);
+    let newNode = new Node(val);
     if(this.head==null){
         this.head=newNode;
     }else{
+
         let curr = this.head;
         while(curr.next!=null){
             curr=curr.next;
         }
-        curr.next = newNode;
+
+        curr.next=newNode;
     }
     this.size++;
     
@@ -69,8 +70,8 @@ MyLinkedList.prototype.addAtTail = function(val) {
 MyLinkedList.prototype.addAtIndex = function(index, val) {
 
     let newNode = new Node(val);
-
-    if(index < 0 || index > this.size) return;
+    // index outofbopund
+    if(index < 0 || index> this.size) return;
 
     if(index==0){
         this.addAtHead(val);
@@ -79,7 +80,8 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
         this.addAtTail(val);
         return;
     }else{
-        let curr = this.head;
+
+        let curr=this.head;
         for(let i=0;i<index-1;i++){
             curr=curr.next;
         }
@@ -96,7 +98,8 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
  * @return {void}
  */
 MyLinkedList.prototype.deleteAtIndex = function(index) {
-    if(index < 0 || index >= this.size) return;
+
+     if(index < 0 || index >= this.size) return;
 
     if(index===0){
         this.head=this.head.next;
@@ -110,6 +113,7 @@ MyLinkedList.prototype.deleteAtIndex = function(index) {
     }
     this.size--;
 
+    
 };
 
 /** 
