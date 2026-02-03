@@ -11,26 +11,39 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
 
-        ArrayList<Integer> list = new ArrayList<>();
+        // find out the middle using slow & fast pointer approach
+        ListNode slow = head;
+        ListNode fast = head;
 
-        ListNode curr = head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+
+        // reverse the second list
+        // assume prev=null and curr = middle(slow)
+
+        ListNode prev = null;
+        ListNode curr = slow;
 
         while(curr!=null){
-            list.add(curr.val);
-            curr = curr.next;
+            ListNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
         }
+        
+        // check for palindrome
+        ListNode firstList = head;
+        ListNode secondList = prev;
 
-        int left = 0;
-        int right = list.size()-1;
-
-        while(left < right){
-            if(!list.get(left).equals(list.get(right))){
+        while(secondList!=null){
+            if(firstList.val!=secondList.val){
                 return false;
             }
-            left++;
-            right--;
+            firstList = firstList.next;
+            secondList = secondList.next;
         }
         return true;
-        
     }
 }
