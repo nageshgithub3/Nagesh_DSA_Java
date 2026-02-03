@@ -11,23 +11,38 @@
  */
 var isPalindrome = function(head) {
 
-    let arr = [];
+    // first find out the middle
 
-    let curr = head;
-
-    while(curr!=null){
-        arr.push(curr.val);
-        curr=curr.next;
+    let slow=fast=head;
+    while(fast&&fast.next){
+        slow=slow.next;
+        fast=fast.next.next;
     }
 
-    let left = 0;
-    let right = arr.length-1;
+    // reverse the second part
+    let prev = null;
+    let curr = slow;
 
-    while(left < right){
-        if(arr[left]!==arr[right]) return false;
-        left++;
-        right--;
+    while(curr){
+        let temp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = temp;
+    }
+
+    // checking for palindrome
+
+    let firstList = head; // start node head
+    let secondList = prev; // end node prev
+
+    while(secondList){
+        if(firstList.val != secondList.val){
+            return false;
+        }
+        firstList = firstList.next;
+        secondList = secondList.next
     }
     return true;
+
     
 };
