@@ -11,20 +11,24 @@
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
 
-        ListNode dummy = new ListNode();
-
-        dummy.next = head;
-
-        ListNode prev = dummy;
-
-        while(prev!=null && prev.next!=null){
-            if(prev.next.val == val){
-                prev.next=prev.next.next;
-            }else{
-                prev=prev.next;
-            }
+// Remove matching nodes from the beginning
+        while(head!=null && head.val==val){
+           head = head.next;
         }
-        return dummy.next;
+// if list becomes empty
+if(head==null) return null;
+// now head is either null or a valid starting node
+    ListNode curr = head;
+
+    while(curr!=null && curr.next!=null){
+        if(curr.next.val==val){
+            curr.next=curr.next.next;
+        }else{
+            curr=curr.next;
+        }
+    }
+    return head;
+
         
     }
 }
