@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-
+/*
         ListNode slow = head;
         ListNode fast = head;
 
@@ -28,7 +28,22 @@ class Solution {
             fast=fast.next;
         }
         slow.next=slow.next.next;
-        return head;
+        return head;*/
+
+        ListNode sentinel = new ListNode();
+        sentinel.next = head;
+
+        ListNode first = sentinel;
+        for(int i=0;i<=n;i++){
+            first=first.next;
+        }
+        ListNode second = sentinel;
+        while(first!=null){
+            first=first.next;
+            second=second.next;
+        }
+        second.next=second.next.next;
+        return sentinel.next;
 
 
         
