@@ -11,6 +11,7 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
+    /* two pass solution
 // create a dummy node for deleting a starting index
     let sentinel = new ListNode();
     sentinel.next = head;
@@ -30,6 +31,24 @@ var removeNthFromEnd = function(head, n) {
         prev=prev.next;
     }
     prev.next=prev.next.next;
+    return sentinel.next;*/
+
+    let sentinel = new ListNode();
+    sentinel.next= head;
+
+    let fast = sentinel;
+    let slow = sentinel;
+
+    for(let i=0;i<=n;i++){
+        fast=fast.next;
+    }
+
+    while(fast!=null){
+        fast=fast.next;
+        slow=slow.next;
+    }
+    slow.next = slow.next.next;
+
     return sentinel.next;
 
    
