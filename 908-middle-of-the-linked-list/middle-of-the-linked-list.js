@@ -11,11 +11,21 @@
  */
 var middleNode = function(head) {
 
-    let slow=fast=head;
+    // 1. Convert a Linkedlist to an array
 
-    while(fast && fast.next){
-        slow=slow.next;
-        fast=fast.next.next;
+    let arr = [];
+
+    let curr = head;
+
+    while(curr){
+        arr.push(curr);
+        curr = curr.next;
     }
-    return slow;
+
+    // To find middle node of the list
+
+    let mid = Math.floor(arr.length/2);
+
+    return arr[mid]; 
+    
 };
