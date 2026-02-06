@@ -12,16 +12,14 @@
  */
 var hasCycle = function(head) {
 
-    let seenNodes = new Set();
+    let slow=fast=head;
 
-    let curr = head;
-
-    while(curr){
-        if(seenNodes.has(curr)){
+    while(fast&&fast.next){
+        slow=slow.next;
+        fast=fast.next.next;
+        if(slow===fast){
             return true;
         }
-        seenNodes.add(curr);
-        curr=curr.next;
     }
     return false;
     
