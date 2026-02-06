@@ -11,17 +11,16 @@
  */
 var isPalindrome = function(head) {
 
-    // first find out the middle
-
-    let slow=fast=head;
-    while(fast&&fast.next){
-        slow=slow.next;
-        fast=fast.next.next;
-    }
-
-    // reverse the second part
-    let prev = null;
-    let curr = slow;
+   // 1. find the middle
+   let slow=fast=head;
+   while(fast&&fast.next){
+    slow=slow.next;
+    fast=fast.next.next;
+   }
+   
+// Reversing to the second part
+   let curr=slow;
+   let prev=null;
 
     while(curr){
         let temp = curr.next;
@@ -30,19 +29,16 @@ var isPalindrome = function(head) {
         curr = temp;
     }
 
-    // checking for palindrome
-
-    let firstList = head; // start node head
-    let secondList = prev; // end node prev
+    let firstList = head;
+    let secondList = prev;
 
     while(secondList){
-        if(firstList.val != secondList.val){
+        if(firstList.val!=secondList.val){
             return false;
         }
         firstList = firstList.next;
-        secondList = secondList.next
+        secondList = secondList.next;
     }
     return true;
-
     
 };
