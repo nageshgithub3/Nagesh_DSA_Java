@@ -3,37 +3,19 @@
  * @return {number}
  */
 var lengthOfLastWord = function(s) {
-    // trim all the spaces at the end
-    let n = s.length-1;
 
-    while(n>=0){
+        let n = s.length-1;
+        let count = 0;
 
-        if(s[n]!=" ") break;
-        --n;
-        /*
-        if(s[n]===" "){
+        while(n>=0){
+            if(s[n]!=" "){
+                ++count;
+            }else if(count > 0){
+                break;
+            }
             --n;
-        }else{
-            break;
-        }*/
-    }
+        }
+        return count;
     
-
-    // count all the character till you reach a space
-    let count = 0;
-    while(n>=0){
-
-        if(s[n]===" ") break;
-        --n;
-        count++;
-        /*
-        if(s[n]!=" "){
-            --n;
-            count++;
-        }else{
-            break;
-        }*/
-    }
-    return count;
     
 };
