@@ -4,9 +4,20 @@ class Solution {
         int count = 0;
 
     for(int i=0;i<stones.length();i++){
-        if(jewels.indexOf(stones.charAt(i))!=-1){
-            count++;
+
+
+        for(int j=0;j<jewels.length();j++){
+            if(jewels.charAt(j)==stones.charAt(i)){
+                count++;
+                break;
+            }
         }
+
+
+
+        // if(jewels.indexOf(stones.charAt(i))!=-1){
+        //     count++;
+        // }
     }
     return count;
         
