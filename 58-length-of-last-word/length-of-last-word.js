@@ -7,7 +7,7 @@ var lengthOfLastWord = function(s) {
     s=s.trim();
     s=s.split(" ");
     return s[s.length-1].length;
-    */
+    
 
     let n = s.length-1;
     while(n>=0){
@@ -26,6 +26,22 @@ var lengthOfLastWord = function(s) {
         }else{
             break;
         }
+    }
+    return count;
+
+    */
+
+    let n = s.length-1;
+    let count = 0;
+
+    while(n>=0){
+        if(s[n]!=" "){
+           
+            ++count;
+        }else if(count > 0){
+            break;
+        }
+         --n;
     }
     return count;
     
