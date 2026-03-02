@@ -1,7 +1,6 @@
 
 var MyStack = function() {
     this.q1=[];
-    this.q2=[];
     
 };
 
@@ -10,7 +9,7 @@ var MyStack = function() {
  * @return {void}
  */
 MyStack.prototype.push = function(x) {
-    this.q1.push(x);
+   this.q1.push(x);
     
 };
 
@@ -18,17 +17,14 @@ MyStack.prototype.push = function(x) {
  * @return {number}
  */
 MyStack.prototype.pop = function() {
+
     let n = this.q1.length;
+
     for(let i=0;i<n-1;i++){
-       // let frontEle = this.ql.shift();
-       // this.q2.push(frontEle);
-        this.q2.push(this.q1.shift());
+        this.q1.push(this.q1.shift());
     }
-    let ans =  this.q1.shift();
-    // exchange q1 and q2
-    let temp=this.q1;
-    this.q1=this.q2;
-    this.q2=temp;
+
+    let ans = this.q1.shift();
 
     return ans;
     
@@ -42,15 +38,15 @@ MyStack.prototype.top = function() {
     let n = this.q1.length;
 
     for(let i=0;i<n-1;i++){
-        this.q2.push(this.q1.shift());
+        this.q1.push(this.q1.shift());
     }
-    let lastElem = this.q1[0]
-    // Exchange q1 and q2
-    this.q2.push(this.q1.shift());
-    let temp=this.q1;
-    this.q1=this.q2;
-    this.q2=temp;
-    return lastElem;
+
+    let front = this.q1[0];
+
+    this.q1.push(this.q1.shift())
+
+    return front;
+
     
 };
 
@@ -58,7 +54,7 @@ MyStack.prototype.top = function() {
  * @return {boolean}
  */
 MyStack.prototype.empty = function() {
-    return this.q1.length === 0 ;
+    return this.q1.length===0;
     
 };
 
