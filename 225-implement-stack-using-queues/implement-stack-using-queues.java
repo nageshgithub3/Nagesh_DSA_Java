@@ -1,10 +1,9 @@
 class MyStack {
     private Queue<Integer>q1;   
-    private Queue<Integer>q2;
+    
 
     public MyStack() {
         q1=new LinkedList<>();
-        q2=new LinkedList<>();
         
     }
     
@@ -17,15 +16,17 @@ class MyStack {
 
         if(q1.isEmpty()) return -1;
 
+        // length of q1
         int n = q1.size();
+
+        // remove n-1 elements
         for(int i=0;i<n-1;i++){
-            q2.add(q1.remove());
+            q1.add(q1.remove());
         }
+
+        // remove and return last element
         int ans = q1.remove();
-        
-        Queue<Integer> temp =q1;
-        q1=q2;
-        q2=temp;
+
         return ans;
         
     }
@@ -38,16 +39,12 @@ class MyStack {
         int n = q1.size();
 
         for(int i=0;i<n-1;i++){
-            q2.add(q1.remove());
+            q1.add(q1.remove());
         }
 
         int front = q1.remove();
 
-        q2.add(front);
-
-        Queue<Integer> temp =q1;
-        q1=q2;
-        q2=temp;
+        q1.add(front);
 
         return front;
     }
