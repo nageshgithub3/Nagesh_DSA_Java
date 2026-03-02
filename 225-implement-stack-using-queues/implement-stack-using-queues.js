@@ -35,17 +35,9 @@ MyStack.prototype.pop = function() {
  */
 MyStack.prototype.top = function() {
 
-    let n = this.q1.length;
-
-    for(let i=0;i<n-1;i++){
-        this.q1.push(this.q1.shift());
-    }
-
-    let front = this.q1[0];
-
-    this.q1.push(this.q1.shift())
-
-    return front;
+    let val = this.pop();
+    this.push(val);
+    return val;
 
     
 };
