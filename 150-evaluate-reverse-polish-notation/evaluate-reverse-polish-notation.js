@@ -26,6 +26,6 @@ var evalRPN = function(t) {
             stack.push(t[i]);
         }
     }
-    return Number(stack.pop());
+    return Number(stack[0]);
     
 };
