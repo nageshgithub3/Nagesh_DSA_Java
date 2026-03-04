@@ -1,15 +1,15 @@
 class Solution {
     public String removeOuterParentheses(String s) {
-        int level = 0;
+        Stack<Character> stack = new Stack<>();
         String ans ="";
 
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='('){
-                ++level;
-                ans += ((level > 1)?s.charAt(i):"");
+                stack.push(s.charAt(i));
+                ans += ((stack.size() > 1)?s.charAt(i):"");
             }else{
-                ans += ((level > 1)?s.charAt(i):"");
-                --level;
+                ans += ((stack.size() > 1)?s.charAt(i):"");
+                stack.pop();
             }
         }
         return ans;
